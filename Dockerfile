@@ -1,4 +1,4 @@
-FROM ubuntu:12.04
+FROM ubuntu:16.04
 RUN locale-gen en_US.UTF-8 &&\
 	update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 RUN apt-get update &&\
