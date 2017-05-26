@@ -6,7 +6,7 @@ RUN locale-gen en_US.UTF-8 &&\
 	update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
 
 #apt-utils
-RUN apt-get install -q -y apt-utils curl
+RUN apt-get install -q -y apt-utils curl software-properties-common python-software-properties
 
 #rvm
 ENV PATH /usr/local/rvm/bin:/usr/local/rvm/rubies/default/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
