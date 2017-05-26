@@ -1,8 +1,9 @@
 FROM ubuntu:16.04
+
+RUN apt-get update &&\
+apt-get install -q -y autoconf binutils-doc bison build-essential flex locales
 RUN locale-gen en_US.UTF-8 &&\
 	update-locale LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
-RUN apt-get update &&\
-apt-get install -q -y autoconf binutils-doc bison build-essential flex
 
 #apt-utils
 RUN apt-get install -q -y apt-utils
