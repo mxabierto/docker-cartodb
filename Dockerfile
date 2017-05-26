@@ -8,8 +8,11 @@ RUN locale-gen en_US.UTF-8 &&\
 #apt-utils
 RUN apt-get install -q -y apt-utils
 
-#ruby-rvm
-RUN apt-get install -q -y ruby-rvm
+#rvm
+RUN \curl -ksSL https://get.rvm.io | bash -s stable --ruby
+RUN /bin/bash -l -c "rvm install 2.2.3"
+RUN /bin/bash -l -c "gem install bundler --no-ri --no-rdoc"
+ENV PATH /usr/local/rvm/bin:/usr/local/rvm/rubies/default/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 #varnish
 RUN apt-get install -q -y varnish
@@ -89,16 +92,7 @@ git checkout 2.87.3 &&\
 apt-get install -q -y libpango1.0-dev &&\
 npm install
 
-#Ruby
-RUN apt-get install -q -y wget &&\
-wget -O ruby-install-0.5.0.tar.gz https://github.com/postmodern/ruby-install/archive/v0.5.0.tar.gz &&\
-tar -xzvf ruby-install-0.5.0.tar.gz &&\
-cd ruby-install-0.5.0/ &&\
-make install
-
-RUN apt-get -q -y install libreadline6-dev openssl &&\
-ruby-install ruby 2.2.3 
-
+RUN apt-get -q -y install libreadline6-dev openssl
 ENV PATH=$PATH:/opt/rubies/ruby-2.2.3/bin 
 
 RUN gem install bundler &&\
